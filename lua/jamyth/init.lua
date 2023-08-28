@@ -1,1 +1,1 @@
-print('nvim setup for Jamyth')
+require('jamyth.remap')
