@@ -1,15 +1,12 @@
 require('lazy').setup({
-{
-	"folke/tokyonight.nvim",
-	lazy = false,
-	priority = 1000,
-	opts = {},
-	config = function()
-		vim.cmd([[colorscheme tokyonight-moon]])
-	end,
-},
+	"rebelot/kanagawa.nvim",
 	{
-    'nvim-telescope/telescope.nvim', tag = '0.1.2',
-      dependencies = { 'nvim-lua/plenary.nvim' }
-    }
+		'nvim-telescope/telescope.nvim', tag = '0.1.2',
+		lazy = false,
+		dependencies = { 'nvim-lua/plenary.nvim' }
+	},
+	{
+		'nvim-treesitter/nvim-treesitter', 
+		build = ':TSUpdate'
+	}
 })
