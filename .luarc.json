@@ -1,0 +1,14 @@
+{
+    "runtime.version": "LuaJIT",
+    "runtime.path": [
+        "lua/?.lua",
+        "lua/?/init.lua",
+        "after/?.lua"
+    ],
+    "dianostics.globals": ["vim"],
+    "workspace.checkThirdParty": false,
+    "workspace.library": [
+        "/opt/homebrew/Cellar/neovim/0.9.1/share/nvim/runtime",
+        "./lua",
+    ]
+}
