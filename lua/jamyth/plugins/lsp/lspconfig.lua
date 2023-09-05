@@ -30,7 +30,8 @@ vim.diagnostic.config({
             { name = 'DiagnosticSignError', text = '' },
             { name = 'DiagnosticSignWarn', text = '' },
             { name = 'DiagnosticSignHint', text = '' },
-            { name = 'DiagnosticSignInfo', text = '' },        }
+            { name = 'DiagnosticSignInfo', text = '' },
+        },
     },
     severity_sort = true,
     float = {
@@ -46,11 +47,11 @@ vim.lsp.handlers['textDocument/hover'] = vim.lsp.with(vim.lsp.handlers.hover, {
 })
 
 -- setup all lsp server at once
--- for _, server in ipairs(auto_setup_servers_list) do
---     lspconfig[server].setup(get_lsp_server_opts(server))
--- end
+for _, server in ipairs(auto_setup_servers_list) do
+    lspconfig[server].setup(get_lsp_server_opts(server))
+end
 
-require("typescript-tools").setup({
+require('typescript-tools').setup({
     server = get_lsp_server_opts('tsserver'),
 })
 

@@ -1,17 +1,22 @@
 return {
-  'nvimdev/guard.nvim',
-  event = { 'BufReadPre' },
-  config = function()
-    local ft = require('guard.filetype')
-    local formatter = require('guard.tools.formatter')
-    local guard = require('guard')
+    'nvimdev/guard.nvim',
+    event = { 'BufReadPre' },
+    config = function()
+        local guard = require('guard')
+        local ft = require('guard.filetype')
+        local formatter = require('guard.format')
 
-    ft('lua'):fmt(formatter.stylua)
-    ft('typescript,javascript,typescriptreact'):fmt('prettier')
+        ft('lua'):fmt('stylua')
+        ft('typescript,javascript,typescriptreact'):fmt('prettier')
 
-    guard.setup({
-      fmt_on_save = true,
-      lsp_as_default_formatter = false,
-    })
-  end,
+        guard.setup({
+            fmt_on_save = true,
+            lsp_as_default_formatter = false,
+        })
+
+        vim.keymap.set('n', '<leader>f', function()
+            local bufnr = vim.api.nvim_get_current_buf()
+            formatter.do_fmt(bufnr)
+        end)
+    end,
 }

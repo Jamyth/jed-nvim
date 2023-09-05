@@ -4,9 +4,14 @@ end
 
 return {
     'nvim-neo-tree/neo-tree.nvim',
-    branch = "v3.x",
+    branch = 'v3.x',
     keys = {
-        { '<leader>e', function() vim.cmd.Neotree('toggle') end, }
+        {
+            '<leader>e',
+            function()
+                vim.cmd.Neotree('toggle')
+            end,
+        },
     },
     config = function()
         local neotree = require('neo-tree')
@@ -14,12 +19,12 @@ return {
             filesystem = {
                 filtered_items = {
                     never_show = {
-                        '.DS_Store'
-                    }
+                        '.DS_Store',
+                    },
                 },
                 follow_current_file = {
-                    enable = true,
-                }
+                    enabled = true,
+                },
             },
             window = {
                 position = 'left',
@@ -30,9 +35,13 @@ return {
                         local node = state.tree:get_node()
                         print(node)
                         vim.fn.setreg('*', node.path, 'c')
-                        vim.notify(path_copied_message(node.path), vim.log.levels.INFO, { title = "neo-tree" })
+                        vim.notify(
+                            path_copied_message(node.path),
+                            vim.log.levels.INFO,
+                            { title = 'neo-tree' }
+                        )
                     end,
-                }
+                },
             },
             close_if_last_window = true,
             enable_git_status = true,
@@ -40,8 +49,8 @@ return {
         })
     end,
     dependencies = {
-        "nvim-lua/plenary.nvim",
-        "nvim-tree/nvim-web-devicons",
-        "MunifTanjim/nui.nvim",
-    }
+        'nvim-lua/plenary.nvim',
+        'nvim-tree/nvim-web-devicons',
+        'MunifTanjim/nui.nvim',
+    },
 }
