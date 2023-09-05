@@ -10,5 +10,14 @@ if not vim.loop.fs_stat(lazypath) then
     lazypath,
   })
 end
+
 vim.opt.rtp:prepend(lazypath)
+
+-- Load plugins
+require('lazy').setup('jamyth.plugins', {
+    defaults = {
+        lazy = true,
+    }
+})
+
 

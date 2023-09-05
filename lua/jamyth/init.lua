@@ -1,6 +1,8 @@
 print('using jamyth.nvim')
-require('jamyth.set')
+require('jamyth.options')
 require('jamyth.remap')
+require('jamyth.autocmd')
 require('jamyth.lazy-installer')
-require('jamyth.packages')
+require('jamyth.colorscheme')
+-- require('jamyth.packages')
 
