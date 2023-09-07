@@ -1,5 +1,6 @@
 -- Restore cursor position
-local preserve_cursor_position_group = vim.api.nvim_create_augroup('preserve_cursor_position_group', {})
+local preserve_cursor_position_group =
+    vim.api.nvim_create_augroup('preserve_cursor_position_group', {})
 vim.api.nvim_create_autocmd({ 'BufReadPost' }, {
     pattern = { '*' },
     group = preserve_cursor_position_group,
@@ -18,6 +19,15 @@ vim.cmd([[
         autocmd FileType help wincmd L
     augroup END
 ]])
+
+-- Show Neotree on startup
+local show_neotree_on_startup = vim.api.nvim_create_augroup('show_neotree_on_startup', {})
+vim.api.nvim_create_autocmd('VimEnter', {
+    group = show_neotree_on_startup,
+    callback = function()
+        vim.cmd.Neotree('toggle')
+    end,
+})
 
 -- auto reload file if checked
 local auto_reload_group = vim.api.nvim_create_augroup('auto_reload_group', {})

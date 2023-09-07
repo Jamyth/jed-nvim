@@ -13,9 +13,21 @@ return {
             end,
         },
     },
+    lazy = false,
     config = function()
         local neotree = require('neo-tree')
         neotree.setup({
+            event_handlers = {
+                {
+                    event = 'file_opened',
+                    handler = function(file_path)
+                        -- auto close
+                        -- vimc.cmd("Neotree close")
+                        -- OR
+                        require('neo-tree.command').execute({ action = 'close' })
+                    end,
+                },
+            },
             filesystem = {
                 filtered_items = {
                     never_show = {
@@ -33,7 +45,6 @@ return {
                     ['<C-z>'] = 'close_all_nodes',
                     ['c'] = function(state)
                         local node = state.tree:get_node()
-                        print(node)
                         vim.fn.setreg('*', node.path, 'c')
                         vim.notify(
                             path_copied_message(node.path),
