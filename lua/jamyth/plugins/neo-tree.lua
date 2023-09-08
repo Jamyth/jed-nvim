@@ -33,6 +33,8 @@ return {
                     never_show = {
                         '.DS_Store',
                     },
+                    hide_dotfiles = false,
+                    hide_gitignored = false,
                 },
                 follow_current_file = {
                     enabled = true,

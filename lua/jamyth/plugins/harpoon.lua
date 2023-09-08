@@ -11,7 +11,7 @@ return {
     vim.keymap.set('n', '<C-j>', function()
       ui.nav_file(1)
     end)
-    vim.keymap.set('n', '<C-u>', function()
+    vim.keymap.set('n', '<C-k>', function()
       ui.nav_file(2)
     end)
     vim.keymap.set('n', '<C-n>', function()

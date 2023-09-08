@@ -3,3 +3,5 @@ return {
     event = { 'TextChanged', 'TextChangedI', 'InsertEnter' },
     config = true
 }
+
+
