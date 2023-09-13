@@ -14,15 +14,21 @@ vim.opt.wrap = false
 
 vim.opt.swapfile = false
 vim.opt.backup = false
-vim.opt.undodir = os.getenv("HOME") .. "/.vim/undodir"
 vim.opt.undofile = true
+
+local xdg_state_home = os.getenv("XDG_STATE_HOME")
+if xdg_state_home == nil then
+  vim.opt.undodir = os.getenv("HOME") .. "/.vim/undodir"
+else
+    vim.opt.undodir = xdg_state_home .. "/undodir"
+end
 
 vim.opt.hlsearch = false
 vim.opt.incsearch = true
 
 vim.opt.termguicolors = true
 
-vim.opt.scrolloff = 8
+vim.opt.scrolloff = 18
 vim.opt.signcolumn = "yes"
 vim.opt.isfname:append("@-@")
 

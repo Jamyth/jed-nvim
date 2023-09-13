@@ -9,6 +9,8 @@ end, servers.ensure_installed_servers)
 local function on_attach(client, bufnr)
     attach.keymaps(bufnr)
     attach.illuminate(client)
+    attach.disable_default_formatting(servers.disable_default_formatting_servers, client)
+    attach.enable_format_on_save(client, bufnr)
 end
 
 local function get_lsp_server_opts(server_name)

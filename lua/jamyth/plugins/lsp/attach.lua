@@ -1,3 +1,4 @@
+local format = require('jamyth.util.format')
 local M = {}
 
 function M.keymaps(bufnr)
@@ -16,8 +17,28 @@ function M.keymaps(bufnr)
     vim.keymap.set('n', '<leader>lc', vim.lsp.buf.code_action, opts)
 end
 
+function M.disable_default_formatting(list, client)
+    if vim.tbl_contains(list, client.name) then
+        client.server_capabilities.document_formatting = false
+        client.server_capabilities.documentFormattingProvider = false
+    end
+end
+
 function M.illuminate(client)
     require('illuminate').on_attach(client)
+end
+
+-- format on save
+local lsp_formatting_augroup = vim.api.nvim_create_augroup('null_ls_lsp_formatting', {})
+function M.enable_format_on_save(_, bufnr)
+    vim.api.nvim_clear_autocmds { group = lsp_formatting_augroup, buffer = bufnr }
+    vim.api.nvim_create_autocmd('BufWritePre', {
+        group = lsp_formatting_augroup,
+        buffer = bufnr,
+        callback = function()
+            format.async_formatting(bufnr)
+        end,
+    })
 end
 
 return M

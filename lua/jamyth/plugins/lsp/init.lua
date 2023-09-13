@@ -51,6 +51,7 @@ return {
             'RRethy/vim-illuminate',
             'ray-x/lsp_signature.nvim',
             'j-hui/fidget.nvim',
+            'lukas-reineke/lsp-format.nvim', --
 
             -- advance lsp
             'pmizio/typescript-tools.nvim',
