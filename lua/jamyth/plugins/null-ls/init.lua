@@ -17,7 +17,7 @@ return {
         local diagnostics = null_ls.builtins.diagnostics
         local code_actions = null_ls.builtins.code_actions
 
-        null_ls.setup {
+        null_ls.setup({
             debug = true,
             sources = {
                 -- Lua
@@ -32,6 +32,6 @@ return {
                 stylelint.create_stylelint_source('diagnostics'),
             },
             -- add should_attach function to attach lsp server only on specific filetype
-        }
+        })
     end,
 }
