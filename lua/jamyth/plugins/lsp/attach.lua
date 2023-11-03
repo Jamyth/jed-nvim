@@ -31,7 +31,7 @@ end
 -- format on save
 local lsp_formatting_augroup = vim.api.nvim_create_augroup('null_ls_lsp_formatting', {})
 function M.enable_format_on_save(_, bufnr)
-    vim.api.nvim_clear_autocmds { group = lsp_formatting_augroup, buffer = bufnr }
+    vim.api.nvim_clear_autocmds({ group = lsp_formatting_augroup, buffer = bufnr })
     vim.api.nvim_create_autocmd('BufWritePre', {
         group = lsp_formatting_augroup,
         buffer = bufnr,

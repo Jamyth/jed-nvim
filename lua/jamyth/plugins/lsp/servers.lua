@@ -10,7 +10,7 @@ M.ensure_installed_servers = {
     -- web
     -- 'rome',
     'tsserver',
-    'tailwindcss',
+    -- 'tailwindcss',
     'cssls',
     'cssmodules_ls',
     'html',
