@@ -21,15 +21,16 @@ end
 
 return {
     'nvim-treesitter/nvim-treesitter',
-    event = { "BufReadPre", "BufNewFile" },
+    event = { 'BufReadPre', 'BufNewFile' },
     build = ':TSUpdate',
     dependencies = {
         'nvim-treesitter/nvim-treesitter-textobjects',
         'windwp/nvim-ts-autotag',
-        'JoosepAlviste/nvim-ts-context-commentstring'
+        'JoosepAlviste/nvim-ts-context-commentstring',
     },
     config = function()
         local configs = require('nvim-treesitter.configs')
+        local commentstring = require('ts_context_commentstring')
         configs.setup({
             ensure_installed = {
                 'c',
@@ -45,7 +46,7 @@ return {
                 'css',
                 'dockerfile',
                 'bash',
-                'toml'
+                'toml',
             },
             auto_install = true,
             highlight = {
@@ -71,14 +72,15 @@ return {
             },
             indent = {
                 enable = true,
-                disable = {'yaml'}
+                disable = { 'yaml' },
             },
-            context_commentstring = {
-                enable = true,
-                enable_autocmd = false,
-            },
+            -- context_commentstring = {
+            --     enable = true,
+            --     enable_autocmd = false,
+            -- },
             autotag = {
                 enable = true,
+                enable_close_on_slash = false,
             },
             textobjects = {
                 select = {
@@ -90,7 +92,7 @@ return {
                         ['ia'] = '@call.outer',
                         ['ac'] = '@class.outer',
                         ['ic'] = '@class.inner',
-                    }
+                    },
                 },
                 move = {
                     enable = true,
@@ -120,7 +122,12 @@ return {
                         ['{f'] = '@function.outer',
                     },
                 },
-            }
+            },
         })
-    end
+        commentstring.setup({
+            enable = true,
+            enable_autocmd = false,
+        })
+        vim.g.skip_ts_context_commentstring_module = true
+    end,
 }
