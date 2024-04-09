@@ -12,6 +12,7 @@ return {
     require("dbee").install()
   end,
   config = function()
-    require("dbee").setup(--[[optional config]])
+    local dbee = require('dbee')
+    dbee.setup(--[[optional config]])
   end,
 }
