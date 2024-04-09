@@ -27,6 +27,13 @@ return {
                         require('neo-tree.command').execute({ action = 'close' })
                     end,
                 },
+                {
+                    event = "neo_tree_buffer_enter",
+                    handler = function ()
+                        vim.opt_local.relativenumber = true
+                    end,
+                },
+
             },
             filesystem = {
                 filtered_items = {
