@@ -19,7 +19,7 @@ M.ensure_installed_servers = {
 }
 
 M.skip_default_setup_servers = {
-    'rust_analyzer',
+    -- 'rust_analyzer',
     'tsserver',
 }
 
