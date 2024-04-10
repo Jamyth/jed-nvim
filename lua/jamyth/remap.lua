@@ -38,6 +38,9 @@ vim.keymap.set('n', 'Q', '<nop>')
 vim.keymap.set('n', '<C-f>', '<cmd>silent !tmux neww tmux-sessionizer<CR>')
 vim.keymap.set('n', '<leader>x', '<cmd>!chmod +x %<CR>', { silent = true })
 
-vim.keymap.set('n', '<leader>bb', function() require('dbee').open() end, { silent = true })
+vim.keymap.set('n', '<leader>bb', function() 
+    vim.cmd.Neotree('close')
+    require('dbee').open()
+end, { silent = true })
 
 -- vim.keymap.set('n', "<leader>f",function()  formatter.async_formatting end)
